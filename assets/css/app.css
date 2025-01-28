@@ -2,4 +2,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+.w-98 {
+  width: 98%;
+  margin: 0.5rem auto;
+}
+
 /* This file is for your main application CSS */
