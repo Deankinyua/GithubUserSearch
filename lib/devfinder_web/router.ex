@@ -18,6 +18,7 @@ defmodule DevfinderWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/finder", FinderLive.Index
   end
 
   # Other scopes may use custom stacks.

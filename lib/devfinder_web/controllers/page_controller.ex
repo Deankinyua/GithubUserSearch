@@ -5,6 +5,6 @@ defmodule DevfinderWeb.PageController do
     # The home page is often custom made,
     # so skip the default app layout.
 
-    render(conn, :home, layout: false)
+    redirect(conn, to: "/finder")
   end
 end
