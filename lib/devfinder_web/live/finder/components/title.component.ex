@@ -6,7 +6,7 @@ defmodule DevfinderWeb.TitleLive.Component do
     ~H"""
     <div class="flex justify-between w-full sm:w-9/12 md:w-1/2">
       <div>devfinder</div>
-      <div>
+      <div class="flex items-center gap-1">
         <.link phx-click={JS.push("dark-mode", value: %{dark: @is_dark})}>
           {@theme}
         </.link>
@@ -21,3 +21,5 @@ defmodule DevfinderWeb.TitleLive.Component do
     {:ok, socket |> assign(assigns)}
   end
 end
+
+# <div><img src="assets/icon-moon.svg" /></div>
