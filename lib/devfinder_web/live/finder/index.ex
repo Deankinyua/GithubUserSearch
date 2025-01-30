@@ -15,7 +15,7 @@ defmodule DevfinderWeb.FinderLive.Index do
 
       <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between">
         <div class="w-3/12">
-          <img src="assets/icon-location.svg" /> search icon
+          search icon
         </div>
 
         <div>
