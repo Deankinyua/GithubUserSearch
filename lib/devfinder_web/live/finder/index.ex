@@ -4,7 +4,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <div>
+    <div class="flex flex-col border-2 border-blue-400 items-center justify-center my-20 ">
       <.live_component
         module={DevfinderWeb.TitleLive.Component}
         id="title_id"
@@ -13,7 +13,21 @@ defmodule DevfinderWeb.FinderLive.Index do
       >
       </.live_component>
 
-      <div class="bg-white  dark:bg-black">bring the money</div>
+      <div class="flex w-1/2 justify-between">
+        <div class="w-3/12">
+          search icon
+        </div>
+
+        <div>
+          bar
+        </div>
+
+        <div class="w-3/12">
+          Search
+        </div>
+      </div>
+
+      <.live_component module={DevfinderWeb.BodyLive.Component} id="body_id"></.live_component>
     </div>
     """
   end
