@@ -13,7 +13,7 @@ defmodule DevfinderWeb.FinderLive.Index do
       >
       </.live_component>
 
-      <div class="flex w-1/2 justify-between">
+      <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between">
         <div class="w-3/12">
           search icon
         </div>

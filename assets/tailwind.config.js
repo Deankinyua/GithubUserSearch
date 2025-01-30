@@ -27,6 +27,13 @@ module.exports = {
       textColor: {
         "custom-gray": "#697C9A",
       },
+
+      screens: {
+        sm: "580px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+      },
     },
   },
   plugins: [
