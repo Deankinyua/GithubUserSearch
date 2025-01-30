@@ -15,7 +15,7 @@ defmodule DevfinderWeb.FinderLive.Index do
 
       <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between">
         <div class="w-3/12">
-          search icon
+          <img src="assets/icon-location.svg" /> search icon
         </div>
 
         <div>
@@ -37,26 +37,36 @@ defmodule DevfinderWeb.FinderLive.Index do
     {:ok,
      socket
      |> assign(is_dark: false)
-     |> assign(theme: "dark")}
+     |> assign(theme: "Dark")}
   end
 
   @impl true
   def handle_event("dark-mode", %{"dark" => value}, socket) do
-    {toggle_value, toggle_text} = toggler(value)
+    {is_dark, theme} = toggle_theme(value)
 
     socket =
       socket
-      |> assign(is_dark: toggle_value)
-      |> assign(theme: toggle_text)
+      |> assign(is_dark: is_dark)
+      |> assign(theme: theme)
 
     {:noreply, push_event(socket, "toggle-mode", %{})}
   end
 
-  defp toggler(value) do
+  defp toggle_theme(value) do
     if value == true do
-      {false, "dark"}
+      {false, "Dark"}
     else
-      {true, "light"}
+      {true, "Light"}
     end
   end
+
+  # def userfinch do
+
+  #   {:ok, response} =
+  #     Finch.build(:get, "https://api.github.com/users/Deankinyua")
+  #     |> Finch.request(Devfinder.Finch)
+
+  #   %{body: value} = response
+  #   dbg(Jason.decode!(value))
+  # end
 end
