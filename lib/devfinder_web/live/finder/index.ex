@@ -2,6 +2,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   use DevfinderWeb, :live_view
 
   alias Devfinder.RetrieveUserDetails
+  alias Devfinder.UserDetails
 
   @impl true
   def render(assigns) do
@@ -50,6 +51,7 @@ defmodule DevfinderWeb.FinderLive.Index do
      socket
      |> assign(is_dark: false)
      |> assign(theme: "Dark")
+     |> assign(user: %UserDetails{})
      |> assign(form: to_form(%{}))}
   end
 
@@ -66,14 +68,17 @@ defmodule DevfinderWeb.FinderLive.Index do
   end
 
   def handle_event("save", %{"username" => username}, socket) do
+    dbg(socket.assigns.user)
     username = String.trim(username)
 
     case RetrieveUserDetails.get_user_data(username) do
-      {:ok, user} -> dbg(user)
-      {:error, reason} -> dbg(reason)
-    end
+      {:ok, user} ->
+        socket = socket |> assign(user: user)
+        {:noreply, socket}
 
-    {:noreply, socket}
+      {:error, _reason} ->
+        {:noreply, socket}
+    end
   end
 
   defp toggle_theme(value) do

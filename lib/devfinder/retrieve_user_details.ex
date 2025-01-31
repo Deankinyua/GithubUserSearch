@@ -1,4 +1,5 @@
 defmodule Devfinder.RetrieveUserDetails do
+  alias Devfinder.UserDetails
   require Logger
 
   def form_url(username) do
@@ -10,7 +11,8 @@ defmodule Devfinder.RetrieveUserDetails do
 
     case build_request(user_url) do
       {:ok, %Finch.Response{status: 200, body: body}} ->
-        body = Jason.decode!(body)
+        body = Jason.decode!(body) |> form_the_return_data()
+
         Logger.info("User with the Username found")
         {:ok, body}
 
@@ -19,11 +21,11 @@ defmodule Devfinder.RetrieveUserDetails do
         {:error, "User Not found"}
 
       {:ok, %Finch.Response{status: 503}} ->
-        Logger.warning("The service is unavailable")
-        {:error, "The service is unavailable"}
+        Logger.warning("The service is Unavailable")
+        {:error, "The Service is Unavailable"}
 
       {:error, reason} ->
-        Logger.error("unknown error")
+        Logger.error("Unknown Error")
         {:error, reason}
     end
   end
@@ -31,5 +33,23 @@ defmodule Devfinder.RetrieveUserDetails do
   def build_request(user_url) do
     Finch.build(:get, user_url)
     |> Finch.request(Devfinder.Finch)
+  end
+
+  def form_the_return_data(body) do
+    %UserDetails{
+      public_repos: body["public_repos"],
+      created_at: body["created_at"],
+      followers: body["followers"],
+      following: body["following"],
+      login: body["login"],
+      location: body["location"],
+      company: body["company"],
+      bio: body["bio"],
+      profile_url: body["profile_url"],
+      avatar_url: body["avatar_url"],
+      name: body["name"],
+      blog: body["blog"],
+      twitter_username: body["twitter_username"]
+    }
   end
 end
