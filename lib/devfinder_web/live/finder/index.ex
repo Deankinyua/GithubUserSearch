@@ -22,6 +22,14 @@ defmodule DevfinderWeb.FinderLive.Index do
           bar
         </div>
 
+        <.form for={@form} phx-submit="save">
+          <.input placeholder="Search GitHub username..." field={@form[:username]} required="true" />
+
+          <.button type="submit" class="mt-2 w-min" phx-disable-with="Saving...">
+            Search
+          </.button>
+        </.form>
+
         <div class="w-3/12">
           Search
         </div>
@@ -37,7 +45,8 @@ defmodule DevfinderWeb.FinderLive.Index do
     {:ok,
      socket
      |> assign(is_dark: false)
-     |> assign(theme: "Dark")}
+     |> assign(theme: "Dark")
+     |> assign(form: to_form(%{}))}
   end
 
   @impl true
@@ -50,6 +59,12 @@ defmodule DevfinderWeb.FinderLive.Index do
       |> assign(theme: theme)
 
     {:noreply, push_event(socket, "toggle-mode", %{})}
+  end
+
+  def handle_event("save", %{"username" => name}, socket) do
+    dbg(name)
+
+    {:noreply, socket}
   end
 
   defp toggle_theme(value) do
