@@ -1,6 +1,8 @@
 defmodule DevfinderWeb.FinderLive.Index do
   use DevfinderWeb, :live_view
 
+  alias Devfinder.RetrieveUserDetails
+
   @impl true
   def render(assigns) do
     ~H"""
@@ -42,6 +44,8 @@ defmodule DevfinderWeb.FinderLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    # dbg(DateTime.utc_now())
+
     {:ok,
      socket
      |> assign(is_dark: false)
@@ -61,8 +65,13 @@ defmodule DevfinderWeb.FinderLive.Index do
     {:noreply, push_event(socket, "toggle-mode", %{})}
   end
 
-  def handle_event("save", %{"username" => name}, socket) do
-    dbg(name)
+  def handle_event("save", %{"username" => username}, socket) do
+    username = String.trim(username)
+
+    case RetrieveUserDetails.get_user_data(username) do
+      {:ok, user} -> dbg(user)
+      {:error, reason} -> dbg(reason)
+    end
 
     {:noreply, socket}
   end
@@ -74,14 +83,4 @@ defmodule DevfinderWeb.FinderLive.Index do
       {true, "Light"}
     end
   end
-
-  # def userfinch do
-
-  #   {:ok, response} =
-  #     Finch.build(:get, "https://api.github.com/users/Deankinyua")
-  #     |> Finch.request(Devfinder.Finch)
-
-  #   %{body: value} = response
-  #   dbg(Jason.decode!(value))
-  # end
 end
