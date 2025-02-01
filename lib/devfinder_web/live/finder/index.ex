@@ -22,9 +22,9 @@ defmodule DevfinderWeb.FinderLive.Index do
           <img src="assets/icon-search.svg" />
         </div>
 
-        <div class="w-9/12">
+        <div class="w-9/12 border border-indigo-800">
           <.form for={@form} phx-submit="save">
-            <section class="flex">
+            <section class="flex items-center justify-between">
               <.input
                 placeholder="Search GitHub username..."
                 field={@form[:username]}
@@ -32,8 +32,12 @@ defmodule DevfinderWeb.FinderLive.Index do
                 autocomplete="off"
               />
 
+              <div class={"#{@errors}"}>
+                No results
+              </div>
+
               <div>
-                <.button type="submit" class="mt-2 w-min" phx-disable-with="Saving...">
+                <.button type="submit" phx-disable-with="Saving...">
                   Search
                 </.button>
               </div>
@@ -42,7 +46,23 @@ defmodule DevfinderWeb.FinderLive.Index do
         </div>
       </div>
 
-      <.live_component module={DevfinderWeb.BodyLive.Component} id="body_id"></.live_component>
+      <.live_component
+        module={DevfinderWeb.BodyLive.Component}
+        id="body_id"
+        name={@user.name}
+        avatar_url={@user.avatar_url}
+        created_at={@user.created_at}
+        bio={@user.bio}
+        public_repos={@user.public_repos}
+        followers={@user.followers}
+        following={@user.following}
+        location={@user.location}
+        username={@user.login}
+        company={@user.company}
+        twitter_username={@user.twitter_username}
+        blog={@user.blog}
+      >
+      </.live_component>
     </div>
     """
   end
@@ -55,6 +75,7 @@ defmodule DevfinderWeb.FinderLive.Index do
      socket
      |> assign(is_dark: false)
      |> assign(theme: "Dark")
+     |> assign(errors: "hidden")
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
      |> assign(form: to_form(%{}))}
@@ -74,7 +95,6 @@ defmodule DevfinderWeb.FinderLive.Index do
   end
 
   def handle_event("save", %{"username" => username}, socket) do
-    dbg(socket.assigns.user)
     username = String.trim(username)
 
     case RetrieveUserDetails.get_user_data(username) do
@@ -83,7 +103,10 @@ defmodule DevfinderWeb.FinderLive.Index do
         {:noreply, socket}
 
       {:error, _reason} ->
-        {:noreply, socket}
+        {:noreply,
+         socket
+         |> assign(user: %UserDetails{})
+         |> assign(errors: "block text-red-400")}
     end
   end
 

@@ -7,7 +7,7 @@ defmodule Devfinder.UserDetails do
             blog: "https://github.blog",
             created_at: "2011-01-25T18:44:36Z",
             twitter_username: nil,
-            followers: 14878,
+            followers: 3938,
             following: 9,
             login: "octocat",
             public_repos: 8,
