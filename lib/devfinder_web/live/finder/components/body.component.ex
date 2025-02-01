@@ -7,7 +7,7 @@ defmodule DevfinderWeb.BodyLive.Component do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="flex justify-between w-full sm:w-9/12 md:w-1/2 border border-red-400">
+    <div class={"#{@is_body_hidden}"}>
       <div class="border rounded-full w-14 h-14">
         <img src={@avatar_url} />
       </div>
@@ -23,12 +23,10 @@ defmodule DevfinderWeb.BodyLive.Component do
             <p>Repos</p>
             <p>{@public_repos}</p>
           </div>
-
           <div class="flex flex-col">
             <p>Followers</p>
             <p>{@followers}</p>
           </div>
-
           <div class="flex flex-col  justify-between">
             <p>Following</p>
             <p>{@following}</p>
@@ -40,19 +38,16 @@ defmodule DevfinderWeb.BodyLive.Component do
               <div><img src="assets/icon-location.svg" /></div>
               <div>{@location}</div>
             </section>
-
             <section class="flex justify-start gap-3 items-center">
               <div><img src="assets/icon-website.svg" /></div>
               <div>{@blog}</div>
             </section>
           </div>
-
           <div class="flex flex-col border-2 border-red-400 gap-4">
             <section class="flex justify-start gap-4 items-center">
               <div><img src="assets/icon-twitter.svg" /></div>
               <div>{@twitter_username}</div>
             </section>
-
             <section class="flex justify-start gap-4 items-center">
               <div><img src="assets/icon-company.svg" /></div>
               <div>

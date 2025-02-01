@@ -60,6 +60,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         company={@user.company}
         twitter_username={@user.twitter_username}
         blog={@user.blog}
+        is_body_hidden={@is_body_hidden}
       />
     </div>
     """
@@ -74,6 +75,9 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(errors: "hidden")
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
+     |> assign(
+       is_body_hidden: "flex justify-between w-full sm:w-9/12 md:w-1/2 border border-red-400"
+     )
      |> assign(form: to_form(%{}))}
   end
 
@@ -98,13 +102,20 @@ defmodule DevfinderWeb.FinderLive.Index do
         {:noreply,
          socket
          |> assign(user: user)
-         |> assign(errors: "hidden")}
+         |> assign(errors: "hidden")
+         |> assign(
+           is_body_hidden: "flex justify-between w-full sm:w-9/12 md:w-1/2 border border-red-400"
+         )}
 
       {:error, _reason} ->
         {:noreply,
          socket
          |> assign(user: %UserDetails{})
-         |> assign(errors: "block text-red-400")}
+         |> assign(errors: "block text-red-400")
+         |> assign(
+           is_body_hidden:
+             "hidden flex justify-between w-full sm:w-9/12 md:w-1/2 border border-red-400"
+         )}
     end
   end
 
