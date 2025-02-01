@@ -14,8 +14,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         is_dark={@is_dark}
         theme={@theme}
         theme_icon={@theme_icon}
-      >
-      </.live_component>
+      />
 
       <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between items-center">
         <div class="w-3/12 border border-blue-400">
@@ -61,8 +60,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         company={@user.company}
         twitter_username={@user.twitter_username}
         blog={@user.blog}
-      >
-      </.live_component>
+      />
     </div>
     """
   end

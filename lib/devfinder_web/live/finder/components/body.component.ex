@@ -16,7 +16,7 @@ defmodule DevfinderWeb.BodyLive.Component do
           <p>{@name}</p>
           <p>{@created_at}</p>
         </section>
-        <section>{@username}</section>
+        <section>@{@username}</section>
         <section>{@bio}</section>
         <section class="flex border border-red-400 pl-6 pr-16 justify-between">
           <div class="flex flex-col">
@@ -35,15 +35,31 @@ defmodule DevfinderWeb.BodyLive.Component do
           </div>
         </section>
         <section class="flex justify-between">
-          <div>{@location}</div>
+          <div class="flex flex-col border-2 border-red-400 gap-4">
+            <section class="flex justify-start gap-4 items-center">
+              <div><img src="assets/icon-location.svg" /></div>
+              <div>{@location}</div>
+            </section>
 
-          <div>{@twitter_username}</div>
-        </section>
+            <section class="flex justify-start gap-3 items-center">
+              <div><img src="assets/icon-website.svg" /></div>
+              <div>{@blog}</div>
+            </section>
+          </div>
 
-        <section class="flex justify-between">
-          <div>{@blog}</div>
+          <div class="flex flex-col border-2 border-red-400 gap-4">
+            <section class="flex justify-start gap-4 items-center">
+              <div><img src="assets/icon-twitter.svg" /></div>
+              <div>{@twitter_username}</div>
+            </section>
 
-          <div>{@company}</div>
+            <section class="flex justify-start gap-4 items-center">
+              <div><img src="assets/icon-company.svg" /></div>
+              <div>
+                {get_correct_company_name(@company)}
+              </div>
+            </section>
+          </div>
         </section>
       </div>
     </div>
@@ -54,5 +70,12 @@ defmodule DevfinderWeb.BodyLive.Component do
 
   def update(assigns, socket) do
     {:ok, socket |> assign(assigns)}
+  end
+
+  defp get_correct_company_name(company) do
+    cond do
+      company == "Not Available" -> "Not Available"
+      true -> "@#{company}"
+    end
   end
 end

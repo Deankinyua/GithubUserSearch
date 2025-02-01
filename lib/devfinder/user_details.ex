@@ -1,7 +1,7 @@
 defmodule Devfinder.UserDetails do
   defstruct name: "The Octocat",
             avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
-            company: "@github",
+            company: "github",
             bio: "This Profile has no bio",
             location: "San Francisco",
             blog: "https://github.blog",
