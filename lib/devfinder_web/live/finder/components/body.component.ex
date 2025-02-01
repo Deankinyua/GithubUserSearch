@@ -14,7 +14,7 @@ defmodule DevfinderWeb.BodyLive.Component do
       <div class="w-3/4 flex flex-col">
         <section class="flex justify-between">
           <p>{@name}</p>
-          <p>{@created_at}</p>
+          <p>{extract_date(@created_at)}</p>
         </section>
         <section>@{@username}</section>
         <section>{@bio}</section>
@@ -56,7 +56,7 @@ defmodule DevfinderWeb.BodyLive.Component do
             <section class="flex justify-start gap-4 items-center">
               <div><img src="assets/icon-company.svg" /></div>
               <div>
-                {get_correct_company_name(@company)}
+                {@company}
               </div>
             </section>
           </div>
@@ -72,10 +72,30 @@ defmodule DevfinderWeb.BodyLive.Component do
     {:ok, socket |> assign(assigns)}
   end
 
-  defp get_correct_company_name(company) do
-    cond do
-      company == "Not Available" -> "Not Available"
-      true -> "@#{company}"
-    end
+  defp extract_date(datetime) do
+    {:ok, datetime, _offset} = DateTime.from_iso8601(datetime)
+
+    %DateTime{year: year, month: month, day: day} = datetime
+
+    list_of_months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
+
+    month_index = month - 1
+
+    month = Enum.at(list_of_months, month_index)
+
+    "#{day} #{month} #{year}"
   end
 end

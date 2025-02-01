@@ -7,7 +7,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col border-2 border-blue-400 items-center justify-center my-20 ">
+    <div class="flex flex-col border-2 border-blue-400 my-20 items-center justify-center my-20 ">
       <.live_component
         module={DevfinderWeb.TitleLive.Component}
         id="title_id"
@@ -67,8 +67,6 @@ defmodule DevfinderWeb.FinderLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    # dbg(DateTime.utc_now())
-
     {:ok,
      socket
      |> assign(is_dark: false)
