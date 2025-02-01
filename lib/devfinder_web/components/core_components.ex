@@ -268,7 +268,10 @@ defmodule DevfinderWeb.CoreComponents do
       <.input field={@form[:email]} type="email" />
       <.input name="my-input" errors={["oh no!"]} />
   """
-  attr :id, :any, default: nil
+  attr :id, :any,
+    default: nil,
+    doc: "use this when you are using a label"
+
   attr :name, :any
   attr :label, :string, default: nil
   attr :value, :any
@@ -369,17 +372,19 @@ defmodule DevfinderWeb.CoreComponents do
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""
-    <div>
+    <div phx-feedback-for={@name}>
       <.label for={@id}>{@label}</.label>
       <input
         type={@type}
         name={@name}
-        id={@id}
+        id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          " placeholder:text-sm lg:placeholder:text-base caret-[#0079FF] dark:bg-[#1E2A47] dark:text-[#FFFFFF] mono-400 block w-full border-none outline-none focus:ring-0 rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "placeholder:text-[#697C9A] dark:placeholder:text-[#FFFFFF] focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5",
+          "border-zinc-300 focus:border-zinc-400 focus:ring-zinc-800/5",
+          @errors != [] && "border-rose-400 focus:border-rose-400 focus:ring-rose-400/10"
         ]}
         {@rest}
       />

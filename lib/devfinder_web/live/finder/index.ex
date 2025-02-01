@@ -13,28 +13,32 @@ defmodule DevfinderWeb.FinderLive.Index do
         id="title_id"
         is_dark={@is_dark}
         theme={@theme}
+        theme_icon={@theme_icon}
       >
       </.live_component>
 
-      <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between">
-        <div class="w-3/12">
-          <img src="assets/icon-location.svg" /> search icon
+      <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between items-center">
+        <div class="w-3/12 border border-blue-400">
+          <img src="assets/icon-search.svg" />
         </div>
 
-        <div>
-          bar
-        </div>
+        <div class="w-9/12">
+          <.form for={@form} phx-submit="save">
+            <section class="flex">
+              <.input
+                placeholder="Search GitHub username..."
+                field={@form[:username]}
+                required="true"
+                autocomplete="off"
+              />
 
-        <.form for={@form} phx-submit="save">
-          <.input placeholder="Search GitHub username..." field={@form[:username]} required="true" />
-
-          <.button type="submit" class="mt-2 w-min" phx-disable-with="Saving...">
-            Search
-          </.button>
-        </.form>
-
-        <div class="w-3/12">
-          Search
+              <div>
+                <.button type="submit" class="mt-2 w-min" phx-disable-with="Saving...">
+                  Search
+                </.button>
+              </div>
+            </section>
+          </.form>
         </div>
       </div>
 
@@ -51,18 +55,20 @@ defmodule DevfinderWeb.FinderLive.Index do
      socket
      |> assign(is_dark: false)
      |> assign(theme: "Dark")
+     |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
      |> assign(form: to_form(%{}))}
   end
 
   @impl true
   def handle_event("dark-mode", %{"dark" => value}, socket) do
-    {is_dark, theme} = toggle_theme(value)
+    {is_dark, theme, theme_icon} = toggle_theme(value)
 
     socket =
       socket
       |> assign(is_dark: is_dark)
       |> assign(theme: theme)
+      |> assign(theme_icon: theme_icon)
 
     {:noreply, push_event(socket, "toggle-mode", %{})}
   end
@@ -83,9 +89,9 @@ defmodule DevfinderWeb.FinderLive.Index do
 
   defp toggle_theme(value) do
     if value == true do
-      {false, "Dark"}
+      {false, "Dark", "icon-moon.svg"}
     else
-      {true, "Light"}
+      {true, "Light", "icon-sun.svg"}
     end
   end
 end

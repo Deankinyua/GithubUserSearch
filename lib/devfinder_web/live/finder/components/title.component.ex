@@ -7,9 +7,13 @@ defmodule DevfinderWeb.TitleLive.Component do
     <div class="flex justify-between w-full sm:w-9/12 md:w-1/2">
       <div>devfinder</div>
       <div class="flex items-center gap-1">
-        <.link phx-click={JS.push("dark-mode", value: %{dark: @is_dark})}>
-          {@theme}
-        </.link>
+        <div>
+          <.link phx-click={JS.push("dark-mode", value: %{dark: @is_dark})}>
+            {@theme}
+          </.link>
+        </div>
+
+        <div><img src={form_theme_icon(@theme_icon)} /></div>
       </div>
     </div>
     """
@@ -19,6 +23,10 @@ defmodule DevfinderWeb.TitleLive.Component do
 
   def update(assigns, socket) do
     {:ok, socket |> assign(assigns)}
+  end
+
+  def form_theme_icon(theme_icon) do
+    "assets/#{theme_icon}"
   end
 end
 
