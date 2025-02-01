@@ -99,8 +99,10 @@ defmodule DevfinderWeb.FinderLive.Index do
 
     case RetrieveUserDetails.get_user_data(username) do
       {:ok, user} ->
-        socket = socket |> assign(user: user)
-        {:noreply, socket}
+        {:noreply,
+         socket
+         |> assign(user: user)
+         |> assign(errors: "hidden")}
 
       {:error, _reason} ->
         {:noreply,

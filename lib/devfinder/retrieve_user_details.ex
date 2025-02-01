@@ -36,6 +36,27 @@ defmodule Devfinder.RetrieveUserDetails do
   end
 
   def form_the_return_data(body) do
+    body =
+      Map.update!(body, "bio", fn x ->
+        if x == nil do
+          "This profile has no bio"
+        else
+          x
+        end
+      end)
+
+    body =
+      Map.new(
+        body,
+        fn {key, value} ->
+          if value == "" || value == nil do
+            {key, "Not Available"}
+          else
+            {key, value}
+          end
+        end
+      )
+
     %UserDetails{
       public_repos: body["public_repos"],
       created_at: body["created_at"],
