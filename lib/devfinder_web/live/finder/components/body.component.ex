@@ -8,7 +8,7 @@ defmodule DevfinderWeb.BodyLive.Component do
   def render(assigns) do
     ~H"""
     <div class={"#{@is_body_hidden}"}>
-      <div class="border border-blue-500 rounded-full w-2/12 h-1/6 overflow-hidden ml-8 hidden md:block">
+      <div class="rounded-full w-2/12 h-1/6 overflow-hidden ml-8 hidden md:block">
         <img src={@avatar_url} class="object-cover" />
       </div>
 
@@ -30,7 +30,7 @@ defmodule DevfinderWeb.BodyLive.Component do
         </div>
         <section class="mb-6 hidden md:block">@{@username}</section>
         <section class="my-8">{@bio}</section>
-        <section class="flex justify-between border border-red-400 px-6 md:pr-16 py-4 mb-8 bg-custom-white">
+        <section class="flex justify-between px-6 md:pr-16 py-4 mb-8 bg-custom-white">
           <div class="flex flex-col">
             <p class="text-sm">Repos</p>
             <p>{@public_repos}</p>
@@ -46,7 +46,7 @@ defmodule DevfinderWeb.BodyLive.Component do
         </section>
 
         <section class="flex flex-col  justify-between md:flex-row">
-          <div class="flex flex-col border-2 border-red-400 gap-4">
+          <div class="flex flex-col gap-4">
             <section class="flex justify-start gap-4 items-center">
               <div>
                 <svg height="20" width="14" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +69,7 @@ defmodule DevfinderWeb.BodyLive.Component do
               <div class={text_color(@blog)}>{@blog}</div>
             </section>
           </div>
-          <div class="flex flex-col border-2 border-red-400 gap-4">
+          <div class="flex flex-col gap-4">
             <section class="flex justify-start gap-4 items-center">
               <div>
                 <svg height="18" width="20" xmlns="http://www.w3.org/2000/svg">

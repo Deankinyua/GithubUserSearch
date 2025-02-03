@@ -7,7 +7,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col bg-white border-2 border-green-400 mono-regular items-center justify-center center-element max-w-4xl">
+    <div class="flex flex-col mono-regular items-center justify-center center-element max-w-4xl">
       <.live_component
         module={DevfinderWeb.TitleLive.Component}
         id="title_id"
@@ -16,12 +16,17 @@ defmodule DevfinderWeb.FinderLive.Index do
         theme_icon={@theme_icon}
       />
 
-      <div class="flex w-full sm:w-11/12 justify-between border-2 border-blue-400 my-6 items-center">
-        <div class="w-3/12 border border-blue-400">
-       <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg"><path d="M10.609 0c5.85 0 10.608 4.746 10.608 10.58 0 2.609-.952 5-2.527 6.847l5.112 5.087a.87.87 0 01-1.227 1.233l-5.118-5.093a10.58 10.58 0 01-6.848 2.505C4.759 21.16 0 16.413 0 10.58 0 4.747 4.76 0 10.609 0zm0 1.74c-4.891 0-8.87 3.965-8.87 8.84 0 4.874 3.979 8.84 8.87 8.84a8.855 8.855 0 006.213-2.537l.04-.047a.881.881 0 01.058-.053 8.786 8.786 0 002.558-6.203c0-4.875-3.979-8.84-8.87-8.84z" fill="#0079ff"/></svg>
+      <div class="flex w-full sm:w-11/12 bg-white justify-between my-6 items-center">
+        <div class="w-3/12">
+          <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.609 0c5.85 0 10.608 4.746 10.608 10.58 0 2.609-.952 5-2.527 6.847l5.112 5.087a.87.87 0 01-1.227 1.233l-5.118-5.093a10.58 10.58 0 01-6.848 2.505C4.759 21.16 0 16.413 0 10.58 0 4.747 4.76 0 10.609 0zm0 1.74c-4.891 0-8.87 3.965-8.87 8.84 0 4.874 3.979 8.84 8.87 8.84a8.855 8.855 0 006.213-2.537l.04-.047a.881.881 0 01.058-.053 8.786 8.786 0 002.558-6.203c0-4.875-3.979-8.84-8.87-8.84z"
+              fill="#0079ff"
+            />
+          </svg>
         </div>
 
-        <div class="w-9/12 border border-indigo-800">
+        <div class="w-9/12">
           <.form for={@form} phx-submit="save">
             <section class="flex items-center justify-between">
               <div class="w-2/3">
@@ -81,9 +86,7 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(errors: "hidden")
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
-     |> assign(
-       is_body_hidden: "flex justify-between w-full sm:w-11/12 py-10 border border-red-400"
-     )
+     |> assign(is_body_hidden: "flex justify-between w-full sm:w-11/12 py-10 bg-white")
      |> assign(form: to_form(%{}))}
   end
 
@@ -109,18 +112,14 @@ defmodule DevfinderWeb.FinderLive.Index do
          socket
          |> assign(user: user)
          |> assign(errors: "hidden")
-         |> assign(
-           is_body_hidden: "flex justify-between w-full sm:w-11/12 py-10 border border-red-400"
-         )}
+         |> assign(is_body_hidden: "flex justify-between w-full sm:w-11/12 py-10 bg-white")}
 
       {:error, _reason} ->
         {:noreply,
          socket
          |> assign(user: %UserDetails{})
          |> assign(errors: "block text-red-400")
-         |> assign(
-           is_body_hidden: "hidden flex justify-between w-full sm:w-11/12 border border-red-400"
-         )}
+         |> assign(is_body_hidden: "hidden flex justify-between w-full sm:w-11/12  bg-white")}
     end
   end
 
