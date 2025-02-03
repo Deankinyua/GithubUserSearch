@@ -8,17 +8,17 @@ defmodule DevfinderWeb.BodyLive.Component do
   def render(assigns) do
     ~H"""
     <div class={"#{@is_body_hidden}"}>
-      <div class="border rounded-full w-14 h-14">
-        <img src={@avatar_url} />
+      <div class="border border-blue-500 rounded-full w-2/12 h-1/6  overflow-hidden ml-8">
+        <img src={@avatar_url} class="object-cover" />
       </div>
-      <div class="w-3/4 flex flex-col">
-        <section class="flex justify-between">
+      <div class="w-3/4 shrink-0 flex flex-col px-4">
+        <section class="flex justify-between mb-2">
           <p>{@name}</p>
-          <p>{extract_date(@created_at)}</p>
+          <p>Joined {extract_date(@created_at)}</p>
         </section>
-        <section>@{@username}</section>
-        <section>{@bio}</section>
-        <section class="flex border border-red-400 pl-6 pr-16 justify-between">
+        <section class="mb-6">@{@username}</section>
+        <section class="mb-8">{@bio}</section>
+        <section class="flex border border-red-400 pl-6 pr-16 py-4 mb-8 justify-between">
           <div class="flex flex-col">
             <p>Repos</p>
             <p>{@public_repos}</p>

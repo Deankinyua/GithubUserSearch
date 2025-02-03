@@ -7,7 +7,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col border-2 border-blue-400 my-20 items-center justify-center my-20 ">
+    <div class="flex flex-col border-2 border-blue-400 my-20 mono-regular items-center justify-center my-20 ">
       <.live_component
         module={DevfinderWeb.TitleLive.Component}
         id="title_id"
@@ -16,7 +16,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         theme_icon={@theme_icon}
       />
 
-      <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between items-center">
+      <div class="flex w-full sm:w-9/12 md:w-1/2 justify-between my-6 items-center">
         <div class="w-3/12 border border-blue-400">
           <img src="assets/icon-search.svg" />
         </div>
@@ -76,7 +76,8 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
      |> assign(
-       is_body_hidden: "flex justify-between w-full sm:w-9/12 md:w-1/2 border border-red-400"
+       is_body_hidden:
+         "flex justify-between w-full sm:w-9/12 md:w-1/2 py-10 border border-red-400"
      )
      |> assign(form: to_form(%{}))}
   end
@@ -104,7 +105,7 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(user: user)
          |> assign(errors: "hidden")
          |> assign(
-           is_body_hidden: "flex justify-between w-full sm:w-9/12 md:w-1/2 border border-red-400"
+           is_body_hidden: "flex justify-between w-full sm:w-9/12 md:w-1/2 py-10 border border-red-400"
          )}
 
       {:error, _reason} ->

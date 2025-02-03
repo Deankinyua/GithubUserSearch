@@ -5,7 +5,7 @@ defmodule DevfinderWeb.TitleLive.Component do
   def render(assigns) do
     ~H"""
     <div class="flex justify-between w-full sm:w-9/12 md:w-1/2">
-      <div>devfinder</div>
+      <div class="mono-semibold text-2xl">devfinder</div>
       <div class="flex items-center gap-1">
         <div>
           <.link phx-click={JS.push("dark-mode", value: %{dark: @is_dark})}>
