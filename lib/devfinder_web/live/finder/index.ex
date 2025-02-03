@@ -16,7 +16,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         theme_icon={@theme_icon}
       />
 
-      <div class="flex w-full sm:w-11/12 bg-white justify-between my-6 items-center rounded-xl border border-red-400">
+      <div class="flex w-full sm:w-11/12 bg-white justify-between my-6 py-2 items-center rounded-xl border border-red-400 hover:cursor-pointer shadow-lg hover:shadow-xl transition ease-in-out duration-500">
         <div class="w-10 mx-3 border border-blue-400">
           <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -33,7 +33,6 @@ defmodule DevfinderWeb.FinderLive.Index do
                 <.input
                   placeholder="Search GitHub username..."
                   field={@form[:username]}
-                  required="true"
                   autocomplete="off"
                 />
               </div>
@@ -116,7 +115,8 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(errors: "hidden")
          |> assign(
            is_body_hidden: "flex justify-between w-full rounded-2xl sm:w-11/12 py-10 bg-white"
-         )}
+         )
+         |> assign(form: to_form(%{}))}
 
       {:error, _reason} ->
         {:noreply,
@@ -125,7 +125,8 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(errors: "block text-red-400")
          |> assign(
            is_body_hidden: "hidden flex justify-between w-full rounded-2xl sm:w-11/12  bg-white"
-         )}
+         )
+         |> assign(form: to_form(%{}))}
     end
   end
 
