@@ -105,7 +105,8 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(user: user)
          |> assign(errors: "hidden")
          |> assign(
-           is_body_hidden: "flex justify-between w-full sm:w-9/12 md:w-1/2 py-10 border border-red-400"
+           is_body_hidden:
+             "flex justify-between w-full sm:w-9/12 md:w-1/2 py-10 border border-red-400"
          )}
 
       {:error, _reason} ->

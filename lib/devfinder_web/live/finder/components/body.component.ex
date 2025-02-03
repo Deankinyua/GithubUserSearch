@@ -8,15 +8,27 @@ defmodule DevfinderWeb.BodyLive.Component do
   def render(assigns) do
     ~H"""
     <div class={"#{@is_body_hidden}"}>
-      <div class="border border-blue-500 rounded-full w-2/12 h-1/6  overflow-hidden ml-8">
+      <div class="border border-blue-500 rounded-full w-2/12 h-1/6 overflow-hidden ml-8 hidden md:block">
         <img src={@avatar_url} class="object-cover" />
       </div>
-      <div class="w-3/4 shrink-0 flex flex-col px-4">
-        <section class="flex justify-between mb-2">
-          <p>{@name}</p>
-          <p>Joined {extract_date(@created_at)}</p>
-        </section>
-        <section class="mb-6">@{@username}</section>
+
+      <div class="w-full shrink-0 flex flex-col px-4 md:w-3/4">
+        <.live_component
+          module={DevfinderWeb.AvatarMobileLive.Component}
+          id="avatar_mobile_id"
+          name={@name}
+          avatar_url={@avatar_url}
+          created_at={@created_at}
+          username={@username}
+        />
+
+        <div class="hidden md:block">
+          <section class="flex justify-between mb-2">
+            <p>{@name}</p>
+            <p>Joined {extract_date(@created_at)}</p>
+          </section>
+        </div>
+        <section class="mb-6 hidden md:block">@{@username}</section>
         <section class="mb-8">{@bio}</section>
         <section class="flex border border-red-400 pl-6 pr-16 py-4 mb-8 justify-between">
           <div class="flex flex-col">
@@ -32,7 +44,7 @@ defmodule DevfinderWeb.BodyLive.Component do
             <p>{@following}</p>
           </div>
         </section>
-        <section class="flex justify-between">
+        <section class="flex flex-col justify-between md:flex-row">
           <div class="flex flex-col border-2 border-red-400 gap-4">
             <section class="flex justify-start gap-4 items-center">
               <div><img src="assets/icon-location.svg" /></div>
@@ -67,7 +79,7 @@ defmodule DevfinderWeb.BodyLive.Component do
     {:ok, socket |> assign(assigns)}
   end
 
-  defp extract_date(datetime) do
+  def extract_date(datetime) do
     {:ok, datetime, _offset} = DateTime.from_iso8601(datetime)
 
     %DateTime{year: year, month: month, day: day} = datetime
