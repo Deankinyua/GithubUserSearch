@@ -16,8 +16,8 @@ defmodule DevfinderWeb.FinderLive.Index do
         theme_icon={@theme_icon}
       />
 
-      <div class="flex w-full sm:w-11/12 bg-white justify-between my-6 items-center">
-        <div class="w-3/12">
+      <div class="flex w-full sm:w-11/12 bg-white justify-between my-6 items-center rounded-xl border border-red-400">
+        <div class="w-10 mx-3 border border-blue-400">
           <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M10.609 0c5.85 0 10.608 4.746 10.608 10.58 0 2.609-.952 5-2.527 6.847l5.112 5.087a.87.87 0 01-1.227 1.233l-5.118-5.093a10.58 10.58 0 01-6.848 2.505C4.759 21.16 0 16.413 0 10.58 0 4.747 4.76 0 10.609 0zm0 1.74c-4.891 0-8.87 3.965-8.87 8.84 0 4.874 3.979 8.84 8.87 8.84a8.855 8.855 0 006.213-2.537l.04-.047a.881.881 0 01.058-.053 8.786 8.786 0 002.558-6.203c0-4.875-3.979-8.84-8.87-8.84z"
@@ -26,7 +26,7 @@ defmodule DevfinderWeb.FinderLive.Index do
           </svg>
         </div>
 
-        <div class="w-9/12">
+        <div class="w-9/12 grow">
           <.form for={@form} phx-submit="save">
             <section class="flex items-center justify-between">
               <div class="w-2/3">
@@ -46,7 +46,7 @@ defmodule DevfinderWeb.FinderLive.Index do
                 <.button
                   type="submit"
                   phx-disable-with="Searching..."
-                  class="hover:cursor-pointer w-[100%] mono-600 text-[#FFFFFF] bg-blue hover:bg-[#0079FF]/70  dark:hover:bg-[#5f9ffc] transition ease-in-out duration-300"
+                  class="hover:cursor-pointer w-[100%] text-[#FFFFFF] bg-[#0079FF] hover:bg-[#66adff]  dark:hover:bg-[#5f9ffc] transition ease-in-out duration-300"
                 >
                   Search
                 </.button>
@@ -86,7 +86,9 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(errors: "hidden")
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
-     |> assign(is_body_hidden: "flex justify-between w-full sm:w-11/12 py-10 bg-white")
+     |> assign(
+       is_body_hidden: "flex justify-between w-full rounded-2xl sm:w-11/12 py-10 bg-white"
+     )
      |> assign(form: to_form(%{}))}
   end
 
@@ -112,14 +114,18 @@ defmodule DevfinderWeb.FinderLive.Index do
          socket
          |> assign(user: user)
          |> assign(errors: "hidden")
-         |> assign(is_body_hidden: "flex justify-between w-full sm:w-11/12 py-10 bg-white")}
+         |> assign(
+           is_body_hidden: "flex justify-between w-full rounded-2xl sm:w-11/12 py-10 bg-white"
+         )}
 
       {:error, _reason} ->
         {:noreply,
          socket
          |> assign(user: %UserDetails{})
          |> assign(errors: "block text-red-400")
-         |> assign(is_body_hidden: "hidden flex justify-between w-full sm:w-11/12  bg-white")}
+         |> assign(
+           is_body_hidden: "hidden flex justify-between w-full rounded-2xl sm:w-11/12  bg-white"
+         )}
     end
   end
 

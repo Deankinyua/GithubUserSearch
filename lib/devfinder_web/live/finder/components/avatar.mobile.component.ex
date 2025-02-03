@@ -8,7 +8,7 @@ defmodule DevfinderWeb.AvatarMobileLive.Component do
     ~H"""
     <div class="md:hidden">
       <div class="flex gap-6">
-        <section class="rounded-full w-1/4 h-1/4 overflow-hidden">
+        <section class="rounded-full border w-1/4 h-1/4 overflow-hidden">
           <img src={@avatar_url} class="object-cover" />
         </section>
 
