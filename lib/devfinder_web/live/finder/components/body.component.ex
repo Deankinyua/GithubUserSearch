@@ -29,22 +29,22 @@ defmodule DevfinderWeb.BodyLive.Component do
           </section>
         </div>
         <section class="mb-6 hidden md:block">@{@username}</section>
-        <section class="mb-8">{@bio}</section>
-        <section class="flex border border-red-400 pl-6 pr-16 py-4 mb-8 justify-between">
+        <section class="my-8 border-2 border-blue-400">{@bio}</section>
+        <section class="flex justify-between border border-red-400 px-6 md:pr-16 py-4 mb-8 bg-custom-white">
           <div class="flex flex-col">
-            <p>Repos</p>
+            <p class="text-sm">Repos</p>
             <p>{@public_repos}</p>
           </div>
           <div class="flex flex-col">
-            <p>Followers</p>
+            <p class="text-sm">Followers</p>
             <p>{@followers}</p>
           </div>
           <div class="flex flex-col  justify-between">
-            <p>Following</p>
+            <p class="text-sm">Following</p>
             <p>{@following}</p>
           </div>
         </section>
-        <section class="flex flex-col justify-between md:flex-row">
+        <section class="flex flex-col  justify-between md:flex-row">
           <div class="flex flex-col border-2 border-red-400 gap-4">
             <section class="flex justify-start gap-4 items-center">
               <div><img src="assets/icon-location.svg" /></div>

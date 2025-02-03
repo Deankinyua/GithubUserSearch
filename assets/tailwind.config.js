@@ -18,11 +18,12 @@ module.exports = {
         brand: "#FD4F00",
         "custom-grey": "#4B6A9B",
         "custom-black": "#2B3442",
-        "custom-white": "#F6F8FF",
-        transparent: "#FEFEFE",
       },
       backgroundColor: {
         blue: "#0079FF",
+        white: "#FEFEFE",
+        "custom-white": "#F6F8FF",
+        gray: "#697C9A",
       },
       textColor: {
         "custom-gray": "#697C9A",

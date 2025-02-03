@@ -7,7 +7,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col border-2 border-green-400 my-20 mono-regular items-center justify-center my-20">
+    <div class="flex flex-col bg-white border-2 border-green-400 mono-regular items-center justify-center center-element max-w-4xl">
       <.live_component
         module={DevfinderWeb.TitleLive.Component}
         id="title_id"
@@ -71,7 +71,7 @@ defmodule DevfinderWeb.FinderLive.Index do
     {:ok,
      socket
      |> assign(is_dark: false)
-     |> assign(theme: "Dark")
+     |> assign(theme: "DARK")
      |> assign(errors: "hidden")
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
@@ -120,9 +120,9 @@ defmodule DevfinderWeb.FinderLive.Index do
 
   defp toggle_theme(value) do
     if value == true do
-      {false, "Dark", "icon-moon.svg"}
+      {false, "DARK", "icon-moon.svg"}
     else
-      {true, "Light", "icon-sun.svg"}
+      {true, "LIGHT", "icon-sun.svg"}
     end
   end
 end
