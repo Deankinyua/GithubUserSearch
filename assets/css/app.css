@@ -5,8 +5,8 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
-.w-98 {
-  width: 98%;
+.w-90 {
+  width: 90%;
   margin: 0.5rem auto;
 }
 

@@ -4,7 +4,7 @@ defmodule DevfinderWeb.TitleLive.Component do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="flex justify-between w-full sm:w-9/12 md:w-1/2">
+    <div class="flex justify-between w-full sm:w-9/12 md:w-11/12">
       <div class="mono-semibold text-2xl">devfinder</div>
       <div class="flex items-center gap-1">
         <div>
