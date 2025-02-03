@@ -24,6 +24,7 @@ module.exports = {
         white: "#FEFEFE",
         "custom-white": "#F6F8FF",
         gray: "#697C9A",
+        blue: "#0079FF",
       },
       textColor: {
         "custom-gray": "#697C9A",
