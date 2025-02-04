@@ -10,6 +10,11 @@
   margin: 0.5rem auto;
 }
 
+.remove-outline:focus {
+  outline-style: none;
+  box-shadow: none;
+}
+
 .w-10 {
   width: 10%;
 }
