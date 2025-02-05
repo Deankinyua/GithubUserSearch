@@ -20,7 +20,6 @@ module.exports = {
         "custom-black": "#2B3442",
       },
       backgroundColor: {
-        blue: "#0079FF",
         white: "#FEFEFE",
         "custom-white": "#F6F8FF",
         gray: "#697C9A",

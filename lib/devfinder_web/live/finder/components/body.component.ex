@@ -136,14 +136,14 @@ defmodule DevfinderWeb.BodyLive.Component do
 
   defp svg_fill(content) do
     cond do
-      content == "Not Available" -> "#697c9a"
+      content == "Not Available" -> "hsl(217, 20%, 70%)"
       true -> "#4b6a9b"
     end
   end
 
   defp text_color(content) do
     cond do
-      content == "Not Available" -> "text-[#697c9a]"
+      content == "Not Available" -> "text-[#a3afc2]"
       true -> "text-[#4b6a9b]"
     end
   end

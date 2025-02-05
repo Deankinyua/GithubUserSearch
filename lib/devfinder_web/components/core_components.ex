@@ -231,7 +231,7 @@ defmodule DevfinderWeb.CoreComponents do
     <button
       type={@type}
       class={[
-        "phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3",
+        "phx-submit-loading:opacity-75 rounded-lg bg-[#0079FF] hover:bg-[#66adff] py-2 px-3",
         "text-sm font-semibold leading-6 text-white active:text-white/80",
         @class
       ]}
@@ -372,7 +372,7 @@ defmodule DevfinderWeb.CoreComponents do
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div>
       <.label for={@id}>{@label}</.label>
       <input
         type={@type}
@@ -380,7 +380,7 @@ defmodule DevfinderWeb.CoreComponents do
         id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          " placeholder:text-sm lg:placeholder:text-base caret-[#0079FF] dark:bg-[#1E2A47] dark:text-[#FFFFFF] mono-400 w-full border-none outline-none rounded-lg py-[7px] px-[11px] remove-outline",
+          " placeholder:text-xs lg:placeholder:text-base caret-[#0079FF] dark:bg-[#1E2A47] dark:text-[#FFFFFF] mono-400 w-full border-none outline-none rounded-lg py-[7px] px-[11px] remove-outline",
           "placeholder:text-[#697C9A] dark:placeholder:text-[#FFFFFF] sm:text-sm sm:leading-6",
           @errors != [] && "border-rose-400 focus:border-rose-400 focus:ring-rose-400/10"
         ]}
