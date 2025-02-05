@@ -8,11 +8,11 @@ defmodule DevfinderWeb.BodyLive.Component do
   def render(assigns) do
     ~H"""
     <div class={"#{@is_body_hidden}"}>
-      <div class="rounded-full border w-2/12 h-1/6 overflow-hidden ml-8 hidden md:block">
+      <div class="rounded-full border w-2/12 h-1/6 overflow-hidden ml-8 hidden md:block md:ml-12">
         <img src={@avatar_url} class="object-cover" />
       </div>
 
-      <div class="w-full shrink-0 flex flex-col px-4 md:w-3/4">
+      <div class="w-full shrink-0 flex flex-col px-4 md:w-3/4 md:pl-4 md:pr-12">
         <.live_component
           module={DevfinderWeb.AvatarMobileLive.Component}
           id="avatar_mobile_id"
@@ -24,11 +24,11 @@ defmodule DevfinderWeb.BodyLive.Component do
 
         <div class="hidden md:block">
           <section class="flex justify-between mb-2">
-            <p>{@name}</p>
+            <p class="mono-semibold text-[#2b3442] text-xl">{@name}</p>
             <p class="text-[#697c9a]">Joined {extract_date(@created_at)}</p>
           </section>
         </div>
-        <section class="mb-6 hidden md:block">@{@username}</section>
+        <section class="mb-6 text-[#0079ff] hidden md:block">@{@username}</section>
         <section class="my-8 text-[#4b6a9b]">{@bio}</section>
         <section class="flex justify-between px-6 md:pr-16 py-4 mb-8 bg-custom-white">
           <div class="flex flex-col items-center md:items-start">

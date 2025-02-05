@@ -380,8 +380,8 @@ defmodule DevfinderWeb.CoreComponents do
         id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          " placeholder:text-xs lg:placeholder:text-base caret-[#0079FF] dark:bg-[#1E2A47] dark:text-[#FFFFFF] mono-400 w-full border-none outline-none rounded-lg py-[7px] px-[11px] remove-outline",
-          "placeholder:text-[#697C9A] dark:placeholder:text-[#FFFFFF] sm:text-sm sm:leading-6",
+          " placeholder:text-xs sm:placeholder:text-base md:placeholder:text-lg lg:placeholder:text-xl caret-[#0079FF] dark:bg-[#1E2A47] dark:text-[#FFFFFF] mono-400 w-full border-none outline-none rounded-lg py-[7px] px-[11px] remove-outline",
+          "placeholder:text-[#697C9A] dark:placeholder:text-[#FFFFFF] sm:text-lg md:text-xl sm:leading-6",
           @errors != [] && "border-rose-400 focus:border-rose-400 focus:ring-rose-400/10"
         ]}
         {@rest}
