@@ -16,7 +16,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         theme_icon={@theme_icon}
       />
 
-      <div class="flex w-full sm:w-11/12 bg-white justify-between my-6 py-2 items-center rounded-xl hover:cursor-pointer shadow-lg hover:shadow-xl transition ease-in-out duration-500">
+      <div class="flex w-full sm:w-11/12 bg-white justify-between mt-8 mb-6 py-2 items-center rounded-xl hover:cursor-pointer shadow-lg hover:shadow-xl transition ease-in-out duration-500">
         <div class="w-10 ml-3">
           <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
             <path

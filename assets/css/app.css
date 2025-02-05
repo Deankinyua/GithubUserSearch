@@ -35,6 +35,12 @@
   font-style: normal;
 }
 
+.mono-550 {
+  font-family: "Space Mono", serif;
+  font-weight: 550;
+  font-style: normal;
+}
+
 .mono-semibold {
   font-family: "Space Mono", serif;
   font-weight: 600;
