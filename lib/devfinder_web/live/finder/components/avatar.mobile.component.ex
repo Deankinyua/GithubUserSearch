@@ -13,9 +13,9 @@ defmodule DevfinderWeb.AvatarMobileLive.Component do
         </section>
 
         <section class="w-2/3 shrink-0 flex justify-between mb-2 flex-col">
-          <p>{@name}</p>
-          <p>@{@username}</p>
-          <p>Joined {Component.extract_date(@created_at)}</p>
+          <p class="mono-semibold text-[#2b3442] text-xl">{@name}</p>
+          <p class="text-[#0079ff]">@{@username}</p>
+          <p class="text-[#697c9a]">Joined {Component.extract_date(@created_at)}</p>
         </section>
       </div>
     </div>

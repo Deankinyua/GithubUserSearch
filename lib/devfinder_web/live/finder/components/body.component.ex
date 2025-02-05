@@ -25,22 +25,22 @@ defmodule DevfinderWeb.BodyLive.Component do
         <div class="hidden md:block">
           <section class="flex justify-between mb-2">
             <p>{@name}</p>
-            <p>Joined {extract_date(@created_at)}</p>
+            <p class="text-[#697c9a]">Joined {extract_date(@created_at)}</p>
           </section>
         </div>
         <section class="mb-6 hidden md:block">@{@username}</section>
-        <section class="my-8">{@bio}</section>
+        <section class="my-8 text-[#4b6a9b]">{@bio}</section>
         <section class="flex justify-between px-6 md:pr-16 py-4 mb-8 bg-custom-white">
           <div class="flex flex-col items-center md:items-start">
-            <p class="text-sm">Repos</p>
+            <p class="text-sm text-[#4b6a9b]">Repos</p>
             <p class="mono-semibold">{@public_repos}</p>
           </div>
           <div class="flex flex-col items-center md:items-start">
-            <p class="text-sm">Followers</p>
+            <p class="text-sm text-[#4b6a9b]">Followers</p>
             <p class="mono-semibold">{@followers}</p>
           </div>
           <div class="flex flex-col items-center md:items-start">
-            <p class="text-sm">Following</p>
+            <p class="text-sm text-[#4b6a9b]">Following</p>
             <p class="mono-semibold">{@following}</p>
           </div>
         </section>
@@ -66,7 +66,7 @@ defmodule DevfinderWeb.BodyLive.Component do
                   </g>
                 </svg>
               </div>
-              <div class={text_color(@blog)}>{@blog}</div>
+              <div class={text_color(@blog)}><span class="hover:underline">{@blog}</span></div>
             </section>
           </div>
           <div class="flex flex-col gap-4">

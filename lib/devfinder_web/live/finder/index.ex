@@ -28,7 +28,7 @@ defmodule DevfinderWeb.FinderLive.Index do
 
         <div class="w-9/12 grow">
           <.form for={@form} phx-submit="save">
-            <section class="flex items-center justify-between">
+            <section class="flex items-center justify-between mr-2">
               <div class="w-2/3">
                 <.input
                   placeholder="Search GitHub username..."
@@ -45,7 +45,7 @@ defmodule DevfinderWeb.FinderLive.Index do
                 <.button
                   type="submit"
                   phx-disable-with="Searching..."
-                  class="hover:cursor-pointer w-[100%] text-[#FFFFFF] bg-[#0079FF]  dark:hover:bg-[#5f9ffc] transition ease-in-out duration-300"
+                  class="hover:cursor-pointer w-[100%] text-[#FFFFFF] bg-[#0079FF] dark:hover:bg-[#5f9ffc] transition ease-in-out duration-300"
                 >
                   Search
                 </.button>
