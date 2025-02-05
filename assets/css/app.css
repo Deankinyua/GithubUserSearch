@@ -23,6 +23,12 @@
   margin: 6rem auto;
 }
 
+.mono-light {
+  font-family: "Space Mono", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
 .mono-regular {
   font-family: "Space Mono", serif;
   font-weight: 400;

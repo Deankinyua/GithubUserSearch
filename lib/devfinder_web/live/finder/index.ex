@@ -86,7 +86,8 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
      |> assign(
-       is_body_hidden: "flex justify-between w-full rounded-2xl sm:w-11/12 py-10 bg-white"
+       is_body_hidden:
+         "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white"
      )
      |> assign(form: to_form(%{}))}
   end
@@ -114,7 +115,8 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(user: user)
          |> assign(errors: "hidden")
          |> assign(
-           is_body_hidden: "flex justify-between w-full rounded-2xl sm:w-11/12 py-10 bg-white"
+           is_body_hidden:
+             "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white"
          )
          |> assign(form: to_form(%{}))}
 
@@ -124,7 +126,8 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(user: %UserDetails{})
          |> assign(errors: "block text-red-400")
          |> assign(
-           is_body_hidden: "hidden flex justify-between w-full rounded-2xl sm:w-11/12  bg-white"
+           is_body_hidden:
+             "hidden flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12  bg-white"
          )
          |> assign(form: to_form(%{}))}
     end
