@@ -16,7 +16,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         theme_icon={@theme_icon}
       />
 
-      <div class="flex w-full sm:w-11/12 bg-white justify-between mt-8 mb-6 py-2 items-center rounded-xl hover:cursor-pointer shadow-lg hover:shadow-xl transition ease-in-out duration-500">
+      <div class="flex w-full sm:w-11/12 bg-white justify-between mt-8 mb-6 py-2 items-center rounded-xl hover:cursor-pointer shadow-lg hover:shadow-xl transition ease-in-out duration-500 dark:bg-[#1E2A47]">
         <div class="w-10 ml-3 md:ml-10 md:w-[5%]">
           <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -87,7 +87,7 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(user: %UserDetails{})
      |> assign(
        is_body_hidden:
-         "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white"
+         "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white dark:bg-[#1E2A47]"
      )
      |> assign(form: to_form(%{}))}
   end
@@ -116,7 +116,7 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(errors: "hidden")
          |> assign(
            is_body_hidden:
-             "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white"
+             "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white dark:bg-[#1E2A47]"
          )
          |> assign(form: to_form(%{}))}
 
@@ -127,7 +127,7 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(errors: "block text-red-400")
          |> assign(
            is_body_hidden:
-             "hidden flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12  bg-white"
+             "hidden flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12  bg-white dark:bg-[#1E2A47]"
          )
          |> assign(form: to_form(%{}))}
     end
