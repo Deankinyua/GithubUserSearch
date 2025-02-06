@@ -6,7 +6,7 @@ defmodule DevfinderWeb.AvatarMobileLive.Component do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="md:hidden">
+    <div class="lg:hidden">
       <div class="flex gap-6">
         <section class="rounded-full border w-1/4 h-1/4 overflow-hidden dark:border-none">
           <img src={@avatar_url} class="object-cover" />

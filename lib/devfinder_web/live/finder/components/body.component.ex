@@ -8,11 +8,11 @@ defmodule DevfinderWeb.BodyLive.Component do
   def render(assigns) do
     ~H"""
     <div class={"#{@is_body_hidden}"}>
-      <div class="rounded-full border w-2/12 h-1/6 overflow-hidden ml-8 hidden md:block md:ml-12 dark:border-none">
+      <div class="rounded-full border w-2/12 h-1/6 overflow-hidden ml-8 hidden lg:block lg:ml-12 dark:border-none">
         <img src={@avatar_url} class="object-cover" />
       </div>
 
-      <div class="w-full shrink-0 flex flex-col px-4 md:w-3/4 md:pl-4 md:pr-12">
+      <div class="w-full shrink-0 flex flex-col px-4 lg:w-3/4 lg:pl-4 lg:pr-12">
         <.live_component
           module={DevfinderWeb.AvatarMobileLive.Component}
           id="avatar_mobile_id"
@@ -22,15 +22,15 @@ defmodule DevfinderWeb.BodyLive.Component do
           username={@username}
         />
 
-        <div class="hidden md:block">
+        <div class="hidden lg:block">
           <section class="flex justify-between mb-2">
             <p class="mono-semibold text-[#2b3442] text-xl dark:text-[#FFFFFF]">{@name}</p>
             <p class="text-[#697c9a] dark:text-[#FFFFFF]">Joined {extract_date(@created_at)}</p>
           </section>
         </div>
-        <section class="mb-6 text-[#0079ff] hidden md:block">@{@username}</section>
+        <section class="mb-6 text-[#0079ff] hidden lg:block">@{@username}</section>
         <section class="my-8 text-[#4b6a9b] dark:text-[#FFFFFF]">{@bio}</section>
-        <section class="flex justify-between px-6 md:pr-16 py-4 mb-8 bg-custom-white dark:bg-[#141D2F]">
+        <section class="flex justify-between px-6 lg:pr-16 py-4 mb-8 bg-custom-white dark:bg-[#141D2F] rounded-xl">
           <div class="flex flex-col items-center md:items-start dark:text-[#FFFFFF]">
             <p class="text-sm text-[#4b6a9b] dark:text-[#FFFFFF]">Repos</p>
             <p class="mono-semibold">{@public_repos}</p>
@@ -75,7 +75,7 @@ defmodule DevfinderWeb.BodyLive.Component do
               <div class={text_color(@blog)}><span class="hover:underline">{@blog}</span></div>
             </section>
           </div>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 md:pr-14 lg:pr-0">
             <section class="flex justify-start gap-3 items-center">
               <div>
                 <svg height="20" width="20" xmlns="http://www.w3.org/2000/svg">

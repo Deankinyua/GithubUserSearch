@@ -87,7 +87,7 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(user: %UserDetails{})
      |> assign(
        is_body_hidden:
-         "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white dark:bg-[#1E2A47]"
+         "flex justify-between shadow-xl w-full rounded-2xl py-10 bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
      )
      |> assign(form: to_form(%{}))}
   end
@@ -116,7 +116,7 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(errors: "hidden")
          |> assign(
            is_body_hidden:
-             "flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12 py-10 bg-white dark:bg-[#1E2A47]"
+             "flex justify-between shadow-xl w-full rounded-2xl py-10 bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
          )
          |> assign(form: to_form(%{}))}
 
@@ -127,7 +127,7 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(errors: "block text-red-400")
          |> assign(
            is_body_hidden:
-             "hidden flex justify-between shadow-xl w-full rounded-2xl sm:w-11/12  bg-white dark:bg-[#1E2A47]"
+             "hidden flex justify-between shadow-xl w-full rounded-2xl bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
          )
          |> assign(form: to_form(%{}))}
     end
