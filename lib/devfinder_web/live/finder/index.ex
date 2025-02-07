@@ -1,4 +1,16 @@
 defmodule DevfinderWeb.FinderLive.Index do
+  @moduledoc """
+  The entrypoint to our LiveView.
+
+  Consists of 3 building blocks:
+  - DevfinderWeb.TitleLive.Component - renders the top section (devfinder and our theme toggle)
+  - form - the middle section that contains the search icon, input and Search button
+  - DevfinderWeb.BodyLive.Component - Renders the body which contains the data from the individual
+
+  The logic for switching between dark and light modes is partly done here.
+
+  """
+
   use DevfinderWeb, :live_view
 
   alias Devfinder.RetrieveUserDetails

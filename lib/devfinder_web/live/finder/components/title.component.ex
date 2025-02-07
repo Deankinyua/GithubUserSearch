@@ -1,4 +1,13 @@
 defmodule DevfinderWeb.TitleLive.Component do
+  @moduledoc """
+  The top section.
+
+  Consists of the devfinder text and theme toggle
+
+  Logic for toggling between the two icons is done here via form_theme_icon/2
+
+  """
+
   use DevfinderWeb, :live_component
 
   @impl true
@@ -50,7 +59,7 @@ defmodule DevfinderWeb.TitleLive.Component do
     {:ok, socket |> assign(assigns)}
   end
 
-  def form_theme_icon(socket, is_dark) do
+  defp form_theme_icon(socket, is_dark) do
     cond do
       is_dark == false ->
         socket =

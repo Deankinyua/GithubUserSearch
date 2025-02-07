@@ -1,4 +1,8 @@
 defmodule DevfinderWeb.AvatarMobileLive.Component do
+  @moduledoc """
+  This is the Avatar section at small screen sizes. It is hidden at viewport lg
+  """
+
   use DevfinderWeb, :live_component
 
   alias DevfinderWeb.BodyLive.Component

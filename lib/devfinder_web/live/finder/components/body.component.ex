@@ -1,8 +1,23 @@
 defmodule DevfinderWeb.BodyLive.Component do
-  use DevfinderWeb, :live_component
+  @moduledoc """
+  Our body component.
 
-  # <div></div>
-  # <p></p>
+  Holds the data fetched from GitHub api.
+
+  Consists of 4 building blocks:
+  - The avatar section - consists of 2 separate sections :
+         - DevfinderWeb.AvatarMobileLive.Component for the small screen sizes
+         - for big screen sizes the code is in this module
+
+  - Bio
+  - Repos, followers and following
+  - Location, twitter username, blog and organization
+
+  The logic for manipulating the last section svg fills is contained here.
+
+  """
+
+  use DevfinderWeb, :live_component
 
   @impl true
   def render(assigns) do

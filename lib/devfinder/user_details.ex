@@ -1,4 +1,11 @@
 defmodule Devfinder.UserDetails do
+  @moduledoc """
+  Our User details struct.
+
+  acts as our Core and is the data that we need in our application
+
+  """
+
   defstruct name: "The Octocat",
             avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
             company: "github",

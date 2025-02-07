@@ -1,9 +1,26 @@
 defmodule Devfinder.RetrieveUserDetails do
+  @moduledoc """
+  This is where we send and receive data from GitHub (Our Context module)
+
+  Contains the functions for:
+   - forming the request (form_url/1, build_request/1),
+
+   - for receiving responses (get_user_data/1)
+
+   - and forming the return data (form_the_return_data/1)
+
+  """
+
   alias Devfinder.UserDetails
   require Logger
 
   def form_url(username) do
     "https://api.github.com/users/" <> username
+  end
+
+  def build_request(user_url) do
+    Finch.build(:get, user_url)
+    |> Finch.request(Devfinder.Finch)
   end
 
   def get_user_data(username) do
@@ -28,11 +45,6 @@ defmodule Devfinder.RetrieveUserDetails do
         Logger.error("Unknown Error")
         {:error, reason}
     end
-  end
-
-  def build_request(user_url) do
-    Finch.build(:get, user_url)
-    |> Finch.request(Devfinder.Finch)
   end
 
   def form_the_return_data(body) do
