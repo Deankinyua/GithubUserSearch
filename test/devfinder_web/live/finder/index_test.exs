@@ -6,9 +6,7 @@ defmodule DevfinderWeb.FinderLive.IndexTest do
   # * test/3 -> test name, the testing context, the contents of the test
 
   test "check liveview content", %{conn: conn} do
-    {:ok, view, html} = live(conn, "/finder")
-
-    dbg(view.module)
+    {:ok, _view, html} = live(conn, "/finder")
 
     assert html =~ "devfinder"
     assert html =~ "Search"

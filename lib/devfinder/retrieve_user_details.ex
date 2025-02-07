@@ -30,7 +30,7 @@ defmodule Devfinder.RetrieveUserDetails do
       {:ok, %Finch.Response{status: 200, body: body}} ->
         body = Jason.decode!(body) |> form_the_return_data()
 
-        Logger.info("User with the Username found")
+        Logger.info("User with the Username found", ansi_color: :yellow)
         {:ok, body}
 
       {:ok, %Finch.Response{status: 404}} ->
