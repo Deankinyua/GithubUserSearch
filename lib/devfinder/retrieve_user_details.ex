@@ -78,7 +78,6 @@ defmodule Devfinder.RetrieveUserDetails do
       location: body["location"],
       company: body["company"],
       bio: body["bio"],
-      profile_url: body["profile_url"],
       avatar_url: body["avatar_url"],
       name: body["name"],
       blog: body["blog"],
