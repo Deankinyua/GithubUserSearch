@@ -27,6 +27,17 @@ defmodule DevfinderWeb.FinderLive.IndexTest do
     assert html =~ "https://github.blog"
   end
 
+  test "check body content after entering a user that does not exist", %{conn: conn} do
+    {:ok, view, _html} = live(conn, "/finder")
+
+    user = "deankinyua"
+
+    form(view, "#search-form", %{username: user}) |> render_submit()
+
+    refute render(view) =~ "The Octocat"
+    refute render(view) =~ "octocat"
+  end
+
   # test "has input element", %{conn: conn} do
   #   {:ok, view, _html} = live(conn, "/finder")
 

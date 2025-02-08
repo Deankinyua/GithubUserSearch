@@ -39,7 +39,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         </div>
 
         <div class="w-9/12 grow">
-          <.form for={@form} phx-submit="save">
+          <.form for={@form} phx-submit="save" id="search-form">
             <section class="flex items-center justify-between mr-2">
               <div class="w-2/3 grow">
                 <.input
@@ -49,7 +49,7 @@ defmodule DevfinderWeb.FinderLive.Index do
                 />
               </div>
 
-              <div class={"#{@errors}"}>
+              <div class={"#{@errors}"} id="error-message">
                 No results
               </div>
 
