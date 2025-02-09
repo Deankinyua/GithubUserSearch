@@ -4,10 +4,8 @@ defmodule DevfinderWeb.FinderLive.IndexTest do
 
   # * test/3 -> test name, the testing context, the contents of the test
 
-  test "check liveview content", %{conn: conn} do
+  test "check liveview content on mount connection", %{conn: conn} do
     {:ok, _view, html} = live(conn, "/finder")
-
-    # open_browser(view)
 
     assert html =~ "devfinder"
     assert html =~ "Search"
@@ -25,24 +23,34 @@ defmodule DevfinderWeb.FinderLive.IndexTest do
     assert html =~ "Not Available"
     assert html =~ "@octocat"
     assert html =~ "https://github.blog"
+    refute html =~ "No Results"
+  end
+
+  test "check body content after entering a user that exists", %{conn: conn} do
+    {:ok, view, _html} = live(conn, "/finder")
+
+    user = "deankinyua"
+
+    html = form(view, "#search-form", %{username: user}) |> render_submit()
+
+    refute html =~ "The Octocat"
+    refute html =~ "@octocat"
+    assert html =~ "Dean Kinyua"
+    assert html =~ "Deankinyua"
   end
 
   test "check body content after entering a user that does not exist", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/finder")
 
-    user = "deankinyua"
+    user = "deankinyuadfhhfj"
+    html = form(view, "#search-form", %{username: user}) |> render_submit()
 
-    form(view, "#search-form", %{username: user}) |> render_submit()
+    # Check if the body container has a class of hidden after not finding a user
+    body_container = element(view, "#body-container")
+    classes = Floki.attribute(render(body_container), "class") |> List.first()
 
-    refute render(view) =~ "The Octocat"
-    refute render(view) =~ "octocat"
+    assert classes =~ "hidden"
+
+    assert html =~ "No Results"
   end
-
-  # test "has input element", %{conn: conn} do
-  #   {:ok, view, _html} = live(conn, "/finder")
-
-  #   element = element(view, ~s(input[placeholder*="Search GitHub userna"]))
-
-  #   assert has_element?(element)
-  # end
 end
