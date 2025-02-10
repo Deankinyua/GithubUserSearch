@@ -39,7 +39,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         </div>
 
         <div class="w-9/12 grow">
-          <.form for={@form} phx-submit="save">
+          <.form for={@form} phx-submit="save" id="search-form">
             <section class="flex items-center justify-between mr-2">
               <div class="w-2/3 grow">
                 <.input
@@ -49,8 +49,8 @@ defmodule DevfinderWeb.FinderLive.Index do
                 />
               </div>
 
-              <div class={"#{@errors}"}>
-                No results
+              <div class="text-red-400">
+                {@errors}
               </div>
 
               <div>
@@ -94,7 +94,7 @@ defmodule DevfinderWeb.FinderLive.Index do
      socket
      |> assign(is_dark: false)
      |> assign(theme: "DARK")
-     |> assign(errors: "hidden")
+     |> assign(errors: "")
      |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
      |> assign(
@@ -125,7 +125,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         {:noreply,
          socket
          |> assign(user: user)
-         |> assign(errors: "hidden")
+         |> assign(errors: "")
          |> assign(
            is_body_hidden:
              "flex justify-between shadow-xl w-full rounded-2xl py-10 bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
@@ -136,7 +136,7 @@ defmodule DevfinderWeb.FinderLive.Index do
         {:noreply,
          socket
          |> assign(user: %UserDetails{})
-         |> assign(errors: "block text-red-400")
+         |> assign(errors: "No Results")
          |> assign(
            is_body_hidden:
              "hidden flex justify-between shadow-xl w-full rounded-2xl bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
