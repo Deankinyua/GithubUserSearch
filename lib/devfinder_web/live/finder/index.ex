@@ -23,9 +23,8 @@ defmodule DevfinderWeb.FinderLive.Index do
       <.live_component
         module={DevfinderWeb.TitleLive.Component}
         id="title_id"
-        is_dark={@is_dark}
         theme={@theme}
-        theme_icon={@theme_icon}
+        is_dark={@is_dark}
       />
 
       <div class="flex w-full sm:w-11/12 bg-white justify-between mt-8 mb-6 py-2 items-center rounded-xl hover:cursor-pointer shadow-lg hover:shadow-xl transition ease-in-out duration-500 dark:bg-[#1E2A47]">
@@ -95,24 +94,19 @@ defmodule DevfinderWeb.FinderLive.Index do
      |> assign(is_dark: false)
      |> assign(theme: "DARK")
      |> assign(errors: "")
-     |> assign(theme_icon: "icon-moon.svg")
      |> assign(user: %UserDetails{})
-     |> assign(
-       is_body_hidden:
-         "flex justify-between shadow-xl w-full rounded-2xl py-10 bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
-     )
+     |> assign(is_body_hidden: "")
      |> assign(form: to_form(%{}))}
   end
 
   @impl true
   def handle_event("dark-mode", %{"dark" => value}, socket) do
-    {is_dark, theme, theme_icon} = toggle_theme(value)
+    {is_dark, theme} = toggle_theme(value)
 
     socket =
       socket
       |> assign(is_dark: is_dark)
       |> assign(theme: theme)
-      |> assign(theme_icon: theme_icon)
 
     {:noreply, push_event(socket, "toggle-mode", %{})}
   end
@@ -126,10 +120,7 @@ defmodule DevfinderWeb.FinderLive.Index do
          socket
          |> assign(user: user)
          |> assign(errors: "")
-         |> assign(
-           is_body_hidden:
-             "flex justify-between shadow-xl w-full rounded-2xl py-10 bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
-         )
+         |> assign(is_body_hidden: "")
          |> assign(form: to_form(%{}))}
 
       {:error, _reason} ->
@@ -137,19 +128,16 @@ defmodule DevfinderWeb.FinderLive.Index do
          socket
          |> assign(user: %UserDetails{})
          |> assign(errors: "No Results")
-         |> assign(
-           is_body_hidden:
-             "hidden flex justify-between shadow-xl w-full rounded-2xl bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2"
-         )
+         |> assign(is_body_hidden: "hidden")
          |> assign(form: to_form(%{}))}
     end
   end
 
   defp toggle_theme(value) do
     if value == true do
-      {false, "DARK", "icon-moon.svg"}
+      {false, "DARK"}
     else
-      {true, "LIGHT", "icon-sun.svg"}
+      {true, "LIGHT"}
     end
   end
 end
