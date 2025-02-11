@@ -22,7 +22,13 @@ defmodule DevfinderWeb.BodyLive.Component do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class={"#{@is_body_hidden}"} id="body-container">
+    <div
+      class={[
+        "flex justify-between shadow-xl w-full rounded-2xl py-10 bg-white dark:bg-[#1E2A47] sm:w-11/12 md:px-10 lg:px-2",
+        @is_body_hidden
+      ]}
+      id="body-container"
+    >
       <div class="rounded-full border w-2/12 h-1/6 overflow-hidden ml-8 hidden lg:block lg:ml-12 dark:border-none">
         <img src={@avatar_url} class="object-cover" />
       </div>

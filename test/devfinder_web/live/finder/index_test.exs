@@ -5,7 +5,9 @@ defmodule DevfinderWeb.FinderLive.IndexTest do
   # * test/3 -> test name, the testing context, the contents of the test
 
   test "check liveview content on mount connection", %{conn: conn} do
-    {:ok, _view, html} = live(conn, "/finder")
+    {:ok, view, html} = live(conn, "/finder")
+
+    assert has_element?(view, ~s(input[placeholder*="Search GitHub username..."]))
 
     assert html =~ "devfinder"
     assert html =~ "Search"
@@ -26,31 +28,33 @@ defmodule DevfinderWeb.FinderLive.IndexTest do
     refute html =~ "No Results"
   end
 
-  test "check body content after entering a user that exists", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/finder")
+  describe "form testing" do
+    test "check body content after entering a user that exists", %{conn: conn} do
+      {:ok, view, _html} = live(conn, "/finder")
 
-    user = "deankinyua"
+      user = "Deankinyua"
 
-    html = form(view, "#search-form", %{username: user}) |> render_submit()
+      html = form(view, "#search-form", %{username: user}) |> render_submit()
 
-    refute html =~ "The Octocat"
-    refute html =~ "@octocat"
-    assert html =~ "Dean Kinyua"
-    assert html =~ "Deankinyua"
-  end
+      refute html =~ "The Octocat"
+      refute html =~ "@octocat"
+      assert html =~ "Dean Kinyua"
+      assert html =~ "Deankinyua"
+    end
 
-  test "check body content after entering a user that does not exist", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/finder")
+    test "check body content after entering a user that does not exist", %{conn: conn} do
+      {:ok, view, _html} = live(conn, "/finder")
 
-    user = "deankinyuadfhhfj"
-    html = form(view, "#search-form", %{username: user}) |> render_submit()
+      user = "deankinyuadfhhfj"
+      html = form(view, "#search-form", %{username: user}) |> render_submit()
 
-    # Check if the body container has a class of hidden after not finding a user
-    body_container = element(view, "#body-container")
-    classes = Floki.attribute(render(body_container), "class") |> List.first()
+      # Check if the body container has a class of hidden after not finding a user
+      body_container = element(view, "#body-container")
+      classes = Floki.attribute(render(body_container), "class") |> List.first()
 
-    assert classes =~ "hidden"
+      assert classes =~ "hidden"
 
-    assert html =~ "No Results"
+      assert html =~ "No Results"
+    end
   end
 end
