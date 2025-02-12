@@ -1,4 +1,4 @@
-defmodule Devfinder.RetrieveUserDetails do
+defmodule Devfinder.ApiClient do
   @moduledoc """
   This is where we send and receive data from GitHub (Our Context module)
 
@@ -13,6 +13,8 @@ defmodule Devfinder.RetrieveUserDetails do
 
   alias Devfinder.UserDetails
   require Logger
+
+  @behaviour Devfinder.ApiClientBehaviour
 
   def form_url(username) do
     "https://api.github.com/users/" <> username

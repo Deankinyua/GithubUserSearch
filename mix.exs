@@ -32,6 +32,7 @@ defmodule Devfinder.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:mox, "~> 1.0", only: :test},
       {:phoenix, "~> 1.7.14"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

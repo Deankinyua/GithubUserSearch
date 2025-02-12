@@ -13,7 +13,6 @@ defmodule DevfinderWeb.FinderLive.Index do
 
   use DevfinderWeb, :live_view
 
-  alias Devfinder.RetrieveUserDetails
   alias Devfinder.UserDetails
 
   @impl true
@@ -114,7 +113,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   def handle_event("save", %{"username" => username}, socket) do
     username = String.trim(username)
 
-    case RetrieveUserDetails.get_user_data(username) do
+    case get_api_client().get_user_data(username) do
       {:ok, user} ->
         {:noreply,
          socket
@@ -132,6 +131,9 @@ defmodule DevfinderWeb.FinderLive.Index do
          |> assign(form: to_form(%{}))}
     end
   end
+
+  # * this returns Devfinder.ApiClient if in dev or runtime env
+  def get_api_client, do: Application.get_env(:devfinder, :api_client)
 
   defp toggle_theme(value) do
     if value == true do
