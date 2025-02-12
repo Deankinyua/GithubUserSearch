@@ -13,7 +13,7 @@ defmodule DevfinderWeb.FinderLive.Index do
 
   use DevfinderWeb, :live_view
 
-  alias Devfinder.RetrieveUserDetails
+  alias Devfinder.ApiClient
   alias Devfinder.UserDetails
 
   @impl true
@@ -114,7 +114,7 @@ defmodule DevfinderWeb.FinderLive.Index do
   def handle_event("save", %{"username" => username}, socket) do
     username = String.trim(username)
 
-    case RetrieveUserDetails.get_user_data(username) do
+    case ApiClient.get_user_data(username) do
       {:ok, user} ->
         {:noreply,
          socket

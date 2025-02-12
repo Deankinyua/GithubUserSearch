@@ -1,4 +1,4 @@
-defmodule Devfinder.RetrieveUserDetails do
+defmodule Devfinder.ApiClient do
   @moduledoc """
   This is where we send and receive data from GitHub (Our Context module)
 
