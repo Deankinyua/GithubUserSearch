@@ -13,6 +13,8 @@ config :devfinder, Devfinder.Mailer, adapter: Swoosh.Adapters.Test
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 
+config :devfinder, api_client: ApiClientBehaviourMock
+
 # Print only warnings and errors during test
 config :logger, level: :warning
 

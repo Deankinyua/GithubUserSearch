@@ -1,31 +1,38 @@
 defmodule DevfinderWeb.FinderLive.IndexTest do
-  use DevfinderWeb.ConnCase
+  use DevfinderWeb.ConnCase, async: true
   import Phoenix.LiveViewTest
+
+  import Mox
+
+  # Make sure mocks are verified when the test exits
+  setup :verify_on_exit!
 
   # * test/3 -> test name, the testing context, the contents of the test
 
-  test "check liveview content on mount connection", %{conn: conn} do
-    {:ok, view, html} = live(conn, "/finder")
+  describe "On Mount" do
+    test "check liveview content on mount connection", %{conn: conn} do
+      {:ok, view, html} = live(conn, "/finder")
 
-    assert has_element?(view, ~s(input[placeholder*="Search GitHub username..."]))
+      assert has_element?(view, ~s(input[placeholder*="Search GitHub username..."]))
 
-    assert html =~ "devfinder"
-    assert html =~ "Search"
+      assert html =~ "devfinder"
+      assert html =~ "Search"
 
-    assert html =~ "Repos"
-    assert html =~ "Following"
-    assert html =~ "Followers"
+      assert html =~ "Repos"
+      assert html =~ "Following"
+      assert html =~ "Followers"
 
-    assert html =~ "The Octocat"
-    assert html =~ "github"
-    assert html =~ "3938"
-    assert html =~ "8"
-    assert html =~ "9"
-    assert html =~ "This profile has no bio"
-    assert html =~ "Not Available"
-    assert html =~ "@octocat"
-    assert html =~ "https://github.blog"
-    refute html =~ "No Results"
+      assert html =~ "The Octocat"
+      assert html =~ "github"
+      assert html =~ "3938"
+      assert html =~ "8"
+      assert html =~ "9"
+      assert html =~ "This profile has no bio"
+      assert html =~ "Not Available"
+      assert html =~ "@octocat"
+      assert html =~ "https://github.blog"
+      refute html =~ "No Results"
+    end
   end
 
   describe "form testing" do

@@ -133,6 +133,9 @@ defmodule DevfinderWeb.FinderLive.Index do
   end
 
   # * this returns Devfinder.ApiClient if in dev or runtime env
+
+  # * overhead is also minimum. Application configuration in Elixir
+  # * is stored in ETS tables which means they are directly read from memory.
   def get_api_client, do: Application.get_env(:devfinder, :api_client)
 
   defp toggle_theme(value) do
