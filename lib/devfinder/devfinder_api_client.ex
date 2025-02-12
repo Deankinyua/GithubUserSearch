@@ -14,6 +14,8 @@ defmodule Devfinder.ApiClient do
   alias Devfinder.UserDetails
   require Logger
 
+  @behaviour Devfinder.ApiClientBehaviour
+
   def form_url(username) do
     "https://api.github.com/users/" <> username
   end

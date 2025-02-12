@@ -55,6 +55,9 @@ config :devfinder, DevfinderWeb.Endpoint,
 # Enable dev routes for dashboard and mailbox
 config :devfinder, dev_routes: true
 
+# configures the api client for the dev environment
+config :devfinder, api_client: Devfinder.ApiClient
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
